@@ -1,0 +1,20 @@
+#!/bin/sh
+cd ~
+# user preferred settings
+
+#cursor size
+export XCURSOR_SIZE=24
+
+# text editor
+export EDITOR=/usr/bin/nvim
+
+#browser
+export BROWSER=brave
+
+#terminal
+export TERM=kitty
+
+#mail
+export MAIL=thunderbird
+
+# check /usr/local/bin/hyprstart

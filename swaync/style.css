@@ -1,0 +1,155 @@
+/* ===============================
+   SWEET DARK – SWAYNC
+   =============================== */
+
+* {
+  all: unset;
+  font-family: "Inter", "JetBrainsMono Nerd Font", sans-serif;
+  font-size: 13px;
+}
+
+/* Sweet Dark palette */
+@define-color bg rgba(20, 18, 24, 0.94);
+@define-color surface rgba(32, 29, 38, 0.95);
+@define-color surface-alt rgba(40, 36, 48, 0.95);
+@define-color fg #f4ecf2;
+@define-color muted #b8a9c9;
+
+@define-color pink #f5a3c7;
+@define-color purple #c89bfa;
+@define-color accent #f5a3c7;
+@define-color red #f28fad;
+
+/* ===============================
+   CONTROL CENTER
+   =============================== */
+
+.control-center {
+  background: @bg;
+  border-radius: 22px;
+  padding: 16px;
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.55),
+    0 0 0 1px rgba(245,163,199,0.08);
+}
+
+/* Title */
+.control-center .title {
+  font-size: 15px;
+  font-weight: 700;
+  color: @fg;
+  margin-bottom: 12px;
+}
+
+/* ===============================
+   NOTIFICATIONS
+   =============================== */
+
+.notification {
+  background: @surface;
+  border-radius: 18px;
+  padding: 14px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(245,163,199,0.08);
+}
+
+.notification:hover {
+  background: @surface-alt;
+}
+
+/* App name */
+.notification .summary {
+  font-weight: 600;
+  color: @fg;
+}
+
+/* Body */
+.notification .body {
+  color: @muted;
+  margin-top: 4px;
+}
+
+/* Icon */
+.notification image {
+  margin-right: 12px;
+  border-radius: 10px;
+}
+
+/* Urgency */
+.notification.critical {
+  border-left: 4px solid @red;
+}
+
+.notification.low {
+  opacity: 0.85;
+}
+
+/* ===============================
+   BUTTONS
+   =============================== */
+
+button {
+  background: rgba(200,155,250,0.12);
+  border-radius: 12px;
+  padding: 8px;
+  margin: 4px;
+  color: @fg;
+}
+
+button:hover {
+  background: rgba(245,163,199,0.25);
+}
+
+/* ===============================
+   DND
+   =============================== */
+
+.dnd {
+  background: rgba(200,155,250,0.12);
+  border-radius: 14px;
+  padding: 10px;
+  margin-bottom: 12px;
+}
+
+.dnd.active {
+  background: rgba(245,163,199,0.25);
+}
+
+/* ===============================
+   SLIDERS
+   =============================== */
+
+scale trough {
+  background: rgba(255,255,255,0.1);
+  border-radius: 999px;
+  min-height: 6px;
+}
+
+scale highlight {
+  background: linear-gradient(
+    90deg,
+    @pink,
+    @purple
+  );
+  border-radius: 999px;
+}
+
+/* ===============================
+   MPRIS
+   =============================== */
+
+.mpris {
+  background: rgba(200,155,250,0.12);
+  border-radius: 18px;
+  padding: 12px;
+}
+
+.mpris .title {
+  font-weight: 600;
+  color: @fg;
+}
+
+.mpris .artist {
+  color: @muted;
+}
+
