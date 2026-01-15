@@ -170,13 +170,16 @@ end
 #     Aliases & Shortcuts
 # ============================
 
-# Directory listings (eza)
-alias l='eza -lh  --icons=auto'
-alias ls='eza -1   --icons=auto'
-alias ll='eza -lha --icons=auto --sort=name --group-directories-first'
-alias ld='eza -lhD --icons=auto'
-alias lt='eza --icons=auto --tree'
+# Directory listings (lsd)
+# Directory listings (lsd)
 
+alias l='lsd -lh --icon=auto'
+alias ls='lsd -1 --icon=auto'
+alias ll='lsd -lha --icon=auto --group-directories-first'
+alias ld='lsd -lh --directory-only --icon=auto'
+alias lt='lsd --tree --depth=2 --icon=auto'
+
+# EDITOR
 alias vc='code'
 alias c='clear'
 alias x='exit'
