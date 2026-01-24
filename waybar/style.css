@@ -45,16 +45,17 @@ nord15 #b48ead
     border: 0;
     border-radius: 0;
     padding: 0 0;
-    font-family:Symbols Nerd Font Mono;
-    font-size: 15px;
+    font-family: GeistMono Nerd Font;
+    font-size: 13.5px;
     margin-right: 5px;
     margin-left: 5px;
-    padding-bottom:2px;
-   }
+    padding-bottom: 2px;
+}
 
 window#waybar {
-    background:rgba (0, 0, 0, 0.65);
-    border-radius: 20px 20px 20px 20px;
+    /* background:rgba (0, 0, 0, 0.65); */
+    border: 0px;
+    border-radius: 20px;
 }
 
 #workspaces button {
@@ -63,14 +64,30 @@ window#waybar {
     color: #eceff4;
     border-color: #d8dee9;
     border-style: solid;
-    margin-top:2px;
+    margin-top: 2px;
 }
 
 #workspaces button.active {
     border-color: #FF0000;
 }
 
-#clock, #battery, #cpu, #memory,#idle_inhibitor, #temperature,#custom-keyboard-layout, #backlight, #network, #pulseaudio, #tray, #window,#custom-launcher,#custom-power,#custom-updates ,#custom-network_traffic,#custom-weather{
+#clock,
+#battery,
+#cpu,
+#memory,
+#idle_inhibitor,
+#temperature,
+#custom-keyboard-layout,
+#backlight,
+#network,
+#pulseaudio,
+#tray,
+#window,
+#custom-launcher,
+#custom-power,
+#custom-updates,
+#custom-network_traffic,
+#custom-weather {
     padding: 0 3px;
     border-bottom: 2px;
     border-style: solid;
@@ -82,7 +99,7 @@ window#waybar {
 
 
 #clock {
- color:#a3be8c;
+    color: #a3be8c;
 }
 
 #backlight {
@@ -115,7 +132,7 @@ window#waybar {
 }
 
 #cpu {
-    color:#a3be8c ;
+    color: #a3be8c;
 }
 
 #memory {
@@ -123,11 +140,11 @@ window#waybar {
 }
 
 #network.disabled {
-    color:#bf616a;
+    color: #bf616a;
 }
 
-#network{
-    color:#a3be8c;
+#network {
+    color: #a3be8c;
 }
 
 #network.disconnected {
@@ -151,33 +168,34 @@ window#waybar {
 }
 
 #idle_inhibitor {
-   color: #ebcb8b;
+    color: #ebcb8b;
 }
 
-#tray {
-}
+#tray {}
 
-#custom-launcher{
-        font-size: 20px;
-        background-image: url('/home/zerocool/.config/waybar/launcher.png');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-        border-style: hidden;
-}
-
-#custom-power{
+#custom-launcher {
+    font-size: 20px;
+    background-image: url('/home/zerocool/.config/waybar/launcher.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
     border-style: hidden;
-    margin-top:2px;
 }
 
-#window{
+#custom-power {
     border-style: hidden;
-    margin-top:1px;
+    margin-top: 2px;
 }
-#custom-keyboard-layout{
-   color:#d08770;
+
+#window {
+    border-style: hidden;
+    margin-top: 1px;
 }
-#custom-network_traffic{
-   color:#d08770;
+
+#custom-keyboard-layout {
+    color: #d08770;
+}
+
+#custom-network_traffic {
+    color: #d08770;
 }

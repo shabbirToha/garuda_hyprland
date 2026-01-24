@@ -174,7 +174,7 @@ end
 # Directory listings (lsd)
 
 alias l='lsd -lh --icon=auto'
-alias ls='lsd -1 --icon=auto'
+alias ls='lsd'
 alias ll='lsd -lha --icon=auto --group-directories-first'
 alias ld='lsd -lh --directory-only --icon=auto'
 alias lt='lsd --tree --depth=2 --icon=auto'

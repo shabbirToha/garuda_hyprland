@@ -2,7 +2,7 @@
     "layer": "top",
     "position": "top",
     "height": 40,
-    "margin": "5 5 5 5",
+    "margin": "5",
     "spacing": 0,
     "modules-left": [
         "custom/launcher",
@@ -44,8 +44,8 @@
             "8": "8",
             "9": "9",
             "10": "10",
-            "focused": "",
-            "default": ""
+            "focused": " ",
+            "default": " "
         },
         "on-scroll-up": "hyprctl dispatch workspace e+1",
         "on-scroll-down": "hyprctl dispatch workspace e-1"
@@ -58,8 +58,8 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": " ",
+            "deactivated": " "
         },
         "on-click": "exec ~/.config/hypr/scripts/idle_inhibitor.sh"
     },
@@ -115,8 +115,8 @@
     },
     "network": {
         "format": "⚠Disabled",
-        "format-wifi": "",
-        "format-ethernet": "",
+        "format-wifi": " ",
+        "format-ethernet": " ",
         "format-linked": "{ifname} (No IP)",
         "format-disconnected": "⚠Disabled",
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
@@ -129,15 +129,15 @@
         "format": "{} {icon}",
         "return-type": "json",
         "format-icons": {
-            "has-updates": "󱍷",
-            "updated": "󰂪"
+            "has-updates": "󱍷 ",
+            "updated": "󰂪 "
         },
         "exec-if": "which waybar-module-pacman-updates",
         "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 7200 --network-interval-seconds",
         "on-click": "kitty -e update"
     },
     "custom/power": {
-        "format": "⏻",
+        "format": "  ",
         "on-click": "nwgbar",
         "tooltip": false
     },
