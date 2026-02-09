@@ -1,124 +1,132 @@
-local function lsp_clients()
-  return require("lsp-progress").progress({
-    format = function(messages)
-      local active_clients = vim.lsp.get_clients()
-      if #messages > 0 then
-        return " LSP:" .. table.concat(messages, " ")
-      end
-      local client_names = {}
-      for _, client in ipairs(active_clients) do
-        if client and client.name ~= "" then
-          table.insert(client_names, "[" .. client.name .. "]")
-        end
-      end
-      if #client_names == 0 then
-        return " LSP: none"
-      end
-      return " LSP:" .. table.concat(client_names, " ")
-    end,
-  })
-end
-
--- 🌈 Quotes
-local quotes = {
-  "Code. Debug. Repeat.",
-  "Keep calm and code Go 🐹",
-  "No bugs, just features!",
-  "Eat, Sleep, Code, Repeat.",
-  "Stay curious, keep coding!",
-  "Refactor fearlessly 💪",
-  "Ship it! 🚀",
-}
-
-local current_quote = quotes[math.random(#quotes)]
-local fade_level = 200
-
-local function update_fade()
-  local color = string.format("#%02x%02x%02x", fade_level, fade_level, fade_level)
-  vim.api.nvim_set_hl(0, "QuoteHighlight", { fg = color })
-end
-
-local function fade_quote()
-  local step = 4
-  local increasing = false
-  vim.fn.timer_start(50, function()
-    fade_level = fade_level + (increasing and step or -step)
-    if fade_level <= 80 then
-      increasing = true
-    end
-    if fade_level >= 230 then
-      increasing = false
-    end
-    update_fade()
-  end, { ["repeat"] = -1 })
-end
-
--- Change quote every 1 minute
-vim.fn.timer_start(60000, function()
-  current_quote = quotes[math.random(#quotes)]
-end, { ["repeat"] = -1 })
-
-fade_quote()
-
--- 📁 Current project name
-local function project_name()
-  local cwd = vim.fn.getcwd()
-  return "📁 " .. vim.fn.fnamemodify(cwd, ":t")
-end
-
 return {
-  {
-    "linrongbin16/lsp-progress.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("lsp-progress").setup()
-    end,
-  },
-  {
-    event = "VeryLazy",
-    "nvim-lualine/lualine.nvim",
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-      "linrongbin16/lsp-progress.nvim",
-    },
-    opts = {
-      options = {
-        theme = "auto",
-        globalstatus = true,
-      },
-      sections = {
-        lualine_a = { "mode" },
-        lualine_b = {
-          { "branch", icon = "" }, -- Git branch icon
-          {
-            "diff",
-            symbols = { added = " ", modified = " ", removed = " " },
-          },
-          {
-            "diagnostics",
-            sources = { "nvim_diagnostic" },
-            symbols = { error = " ", warn = " ", info = " " },
-          },
-          lsp_clients,
-        },
-        lualine_c = { project_name },
-        lualine_x = {
-          function()
-            return "%#QuoteHighlight#" .. current_quote
-          end,
-        },
-        lualine_y = { "progress" },
-        lualine_z = { "location" },
-      },
-    },
-    config = function(_, opts)
-      require("lualine").setup(opts)
-      vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "LspProgressStatusUpdated",
-        group = "lualine_augroup",
-        callback = require("lualine").refresh,
-      })
-    end,
-  },
+	{
+		"linrongbin16/lsp-progress.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("lsp-progress").setup()
+		end,
+	},
+	{
+		"nvim-lualine/lualine.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+			"linrongbin16/lsp-progress.nvim",
+		},
+		opts = function()
+			local function lsp_clients()
+				return require("lsp-progress").progress({
+					format = function(messages)
+						local active_clients = vim.lsp.get_clients()
+						if #messages > 0 then
+							return " LSP:" .. table.concat(messages, " ")
+						end
+						local client_names = {}
+						for _, client in ipairs(active_clients) do
+							if client and client.name ~= "" then
+								table.insert(client_names, "[" .. client.name .. "]")
+							end
+						end
+						return #client_names > 0 and " LSP:" .. table.concat(client_names, " ") or " LSP: none"
+					end,
+				})
+			end
+
+			local function project_name()
+				return "📁 " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+			end
+
+			local mode_map = {
+				["n"] = "N",
+				["i"] = "I",
+				["v"] = "V",
+				["V"] = "V",
+				[""] = "V",
+				["c"] = "C",
+				["s"] = "S",
+				["S"] = "S",
+				[""] = "S",
+				["R"] = "R",
+				["r"] = "R",
+				["!"] = "!",
+				["t"] = "T",
+			}
+
+			return {
+				options = {
+					theme = "auto",
+					globalstatus = true,
+					component_separators = { left = "", right = "" },
+					section_separators = { left = "", right = "" },
+				},
+				sections = {
+					lualine_a = {
+						{
+							"mode",
+							icon = "",
+							fmt = function(str)
+								return mode_map[vim.fn.mode()] or str:sub(1, 1)
+							end,
+						},
+					},
+					lualine_b = {
+						{ "branch", icon = "" },
+						{
+							"diff",
+							symbols = { added = " ", modified = " ", removed = " " },
+							colored = true,
+							diff_color = {
+								added = { fg = "#98be65" },
+								modified = { fg = "#51afef" },
+								removed = { fg = "#ec5f67" },
+							},
+							source = function()
+								local gitsigns = vim.b.gitsigns_status_dict
+								if gitsigns then
+									return {
+										added = gitsigns.added,
+										modified = gitsigns.changed,
+										removed = gitsigns.removed,
+									}
+								end
+							end,
+						},
+						{
+							"diagnostics",
+							sources = { "nvim_diagnostic" },
+							symbols = { error = " ", warn = " ", info = " ", hint = "💡" },
+							colored = true,
+						},
+					},
+					lualine_c = {
+						{ project_name },
+						{
+							"filename",
+							path = 1,
+							symbols = { modified = "📝", readonly = "🔏" },
+						},
+					},
+					lualine_x = {
+						{ lsp_clients },
+					},
+					lualine_y = {
+						{ "filetype", colored = true, icon_only = false },
+						{ "encoding" },
+					},
+					lualine_z = {
+						{ "progress" },
+						{ "location" },
+					},
+				},
+				extensions = { "neo-tree", "lazy", "mason", "trouble" },
+			}
+		end,
+		config = function(_, opts)
+			require("lualine").setup(opts)
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "LspProgressStatusUpdated",
+				callback = require("lualine").refresh,
+			})
+		end,
+	},
 }
