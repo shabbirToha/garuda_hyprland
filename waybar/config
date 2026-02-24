@@ -75,11 +75,11 @@
         "on-click": "~/.config/waybar/scripts/OCV"
     },
     "cpu": {
-        "format": "💻️ {usage}%",
+        "format": "💻️{usage}%",
         "on-click": "kitty -e btop"
     },
     "memory": {
-        "format": "💾 {: >3}%",
+        "format": "💾{:>3}%",
         "on-click": "kitty -e btop"
     },
     "temperature": {
@@ -122,7 +122,7 @@
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
         "family": "ipv4",
         "tooltip-format-wifi": " {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
-        "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
+        "tooltip-format-ethernet": "🎮️ {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
         "on-click": "nm-connection-editor"
     },
     "custom/updates": {
@@ -137,7 +137,7 @@
         "on-click": "kitty -e update"
     },
     "custom/power": {
-        "format": "  ",
+        "format": "💣️",
         "on-click": "nwgbar",
         "tooltip": false
     },
