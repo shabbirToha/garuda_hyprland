@@ -1,85 +1,96 @@
-/* --- THEME COLORS --- */
-@define-color bg rgba(10, 12, 18, 0.75);
-@define-color accent #00ffff; /* Neon Cyan */
-@define-color secondary #ff00ff; /* Neon Magenta */
-@define-color text #ffffff;
-@define-color subtle rgba(255, 255, 255, 0.1);
-
 * {
-    font-family: "JetBrainsMono Nerd Font", "Inter", sans-serif;
+  font-family: "JetBrainsMono Nerd Font", sans-serif;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
 }
 
-/* Control Center Container */
+/* Base Notification Container */
+.notification-row {
+  outline: none;
+  margin: 6px 0px;
+  background: transparent;
+}
+
+/* The actual bubble */
+.notification-content {
+  background: #1e1e2e; /* Solid Base */
+  border: 2px solid #89b4fa; /* Bright Blue Border */
+  border-radius: 10px;
+  padding: 12px;
+  margin: 4px;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.4); /* Retro Hard Shadow */
+}
+
+/* Hover Animation */
+.notification-row:hover .notification-content {
+  background: #242438;
+  border-color: #f5c2e7; /* Changes to Pink on hover */
+  transform: scale(1.02);
+}
+
+/* Control Center - Solid Glass Look */
 .control-center {
-    background: @bg;
-    border: 2px solid @accent;
-    border-radius: 0px; /* Sharp corners look more "military-tech" */
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2), inset 0 0 10px rgba(0, 255, 255, 0.1);
-    margin: 10px;
-    padding: 10px;
+  background: #11111b;
+  border: 2px solid #313244;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px;
 }
 
-/* Header Text */
-.widget-title > label {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: @accent;
-    text-shadow: 0 0 8px @accent;
+/* Widgets Section */
+.widget-title {
+  color: #cba6f7;
+  font-size: 1.2rem;
+  margin: 10px;
 }
 
-/* Notifications Popups */
-.notification {
-    background: rgba(20, 22, 30, 0.9);
-    border-left: 4px solid @accent;
-    border-radius: 0;
-    margin: 8px 0px;
-    padding: 12px;
-    transition: all 0.2s ease-in-out;
+.widget-title > button {
+  background: #313244;
+  color: #f38ba8;
+  border-radius: 8px;
+  padding: 5px 12px;
 }
 
-.notification:hover {
-    background: rgba(30, 35, 45, 1);
-    border-left: 4px solid @secondary;
-    transform: translateX(-5px); /* Smooth slide on hover */
+.widget-title > button:hover {
+  background: #f38ba8;
+  color: #11111b;
 }
 
-/* Buttons and Toggles */
-.widget-dnd > switch {
-    background: @subtle;
-    border: 1px solid @accent;
-    border-radius: 0px;
-}
-
-.widget-dnd > switch:checked {
-    background: @accent;
-    box-shadow: 0 0 10px @accent;
-}
-
-/* Volume/Brightness Sliders */
-scale {
-    padding: 8px;
-    margin: 4px;
-}
-
-scale highlight {
-    background: @accent;
-    border-radius: 0;
-}
-
-scale trough {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Media Player */
+/* Music Player Widget */
 .widget-mpris {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid @subtle;
-    padding: 15px;
-    margin-bottom: 10px;
+  background: #181825;
+  border: 1px solid #45475a;
+  border-radius: 12px;
+  padding: 12px;
+  margin: 8px;
+}
+
+.widget-mpris-player {
+  padding: 5px;
 }
 
 .widget-mpris-title {
-    color: @accent;
-    font-size: 1.1rem;
+  font-size: 1.1rem;
+  color: #89b4fa;
+}
+
+.widget-mpris-subtitle {
+  color: #bac2de;
+}
+
+/* DND Switch */
+.widget-dnd {
+  background: #181825;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 8px;
+}
+
+.widget-dnd > switch {
+  border-radius: 20px;
+  background: #313244;
+}
+
+.widget-dnd > switch:checked {
+  background: #a6e3a1; /* Green when ON */
 }
