@@ -41,7 +41,7 @@ configuration {
 
     /* Semantic aliases */
     background-color:   transparent;
-    text-color:         @fg0;
+    text-color:         @green;
 }
 
 /* ── Window ───────────────────────────────────────────────────────────── */
@@ -74,13 +74,13 @@ inputbar {
 
 prompt {
     background-color: transparent;
-    text-color:       @accent;
+    text-color:       @cyan;
     font:             "Monaspice Rn Nerd Font 14";
 }
 
 entry {
     background-color: transparent;
-    text-color:       @red;
+    text-color:       @green;
     placeholder-color: @fg2;
     font:             "Monaspice Rn Nerd Font 10";
     cursor:           text;
@@ -95,14 +95,14 @@ mode-switcher {
 
 button {
     background-color: @bg2;
-    text-color:       @red;
+    text-color:       @magenta;
     border-radius:    6px;
     padding:          5px 12px;
     cursor:           pointer;
 }
 
 button selected {
-    background-color: @accent;
+    background-color: @red;
     text-color:       @bg0;
 }
 
