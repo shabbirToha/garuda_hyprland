@@ -34,11 +34,11 @@
         "all-outputs": true,
         "sort-by-number": true,
         "format-icons": {
-            "1": "1",
-            "2": "2",
-            "3": "3",
-            "4": "4",
-            "5": "5",
+            "1": "🖳",
+            "2": "⌘",
+            "3": "⌨",
+            "4": "🗁 ",
+            "5": "🗐",
             "6": "6",
             "7": "7",
             "8": "8",
@@ -137,13 +137,13 @@
         "on-click": "kitty -e update"
     },
     "custom/power": {
-        "format": "💣️",
+        "format": "",
         "on-click": "nwgbar",
         "tooltip": false
     },
     "custom/launcher": {
         "format": " ",
-        "on-click": "exec nwg-drawer -c 7 -is 60 -spacing 20",
+        "on-click": "exec nwg-drawer -c 6 -is 50 -spacing 20",
         "tooltip": false
     },
     "custom/network_traffic": {
@@ -172,7 +172,7 @@
                 ""
             ]
         },
-        "on-click": "footclient -T waybar_alsamixer -e alsamixer -M",
+        "on-click": "kitty -T waybar_alsamixer -e alsamixer -M",
         "on-click-right": "pavucontrol"
     },
     "custom/weather": {
