@@ -4,17 +4,21 @@ configuration {
     show-icons:         true;
     terminal:           "kitty";
     editor:             "nvim";
-    matching:           "regex";
+
+    matching:           "fuzzy";
+    case-sensitive:     false;
+
     drun-match-fields:  "name";
+
     display-drun:       "󰀻 Apps:";
     display-run:        " Menu:";
     display-ssh:        " SSH:";
-    display-emoji:		"󱃞 Emoji";
+    display-emoji:      "󱃞 Emoji";
+
     kb-move-char-forward: "Right";
-    kb-move-char-back: "Left";
-    kb-mode-next: "Alt+Right";
-    kb-mode-previous: "Alt+Left";
-    
+    kb-move-char-back:    "Left";
+    kb-mode-next:         "Alt+Right";
+    kb-mode-previous:     "Alt+Left";
 }
 
 @theme "storm"
@@ -39,9 +43,8 @@ configuration {
     accent:  @fg2;
     urgent:  @red;
 
-    /* Semantic aliases */
-    background-color:   transparent;
-    text-color:         @green;
+    background-color: transparent;
+    text-color:       @green;
 }
 
 /* ── Window ───────────────────────────────────────────────────────────── */
@@ -75,15 +78,29 @@ inputbar {
 prompt {
     background-color: transparent;
     text-color:       @cyan;
-    font:             "Monaspice Rn Nerd Font 14";
+    font:             "CaskaydiaCove Nerd Font Italic 14";
 }
 
 entry {
     background-color: transparent;
     text-color:       @green;
-    placeholder-color: @fg2;
-    font:             "Monaspice Rn Nerd Font 10";
+    placeholder-color:@fg2;
+    font:             "CaskaydiaCove Nerd Font Italic 10";
     cursor:           text;
+}
+
+element-text {
+    background-color: transparent;
+    text-color:       inherit;
+    cursor:           inherit;
+    vertical-align:   0.5;
+    font:             "CaskaydiaCove Nerd Font Italic 12";
+}
+
+textbox {
+    background-color: transparent;
+    text-color:       @fg2;
+    font:             "CaskaydiaCove Nerd Font Italic 12";
 }
 
 /* ── Mode switcher ────────────────────────────────────────────────────── */
@@ -174,26 +191,4 @@ element-icon {
     background-color: transparent;
     size:             24px;
     cursor:           inherit;
-}
-
-element-text {
-    background-color: transparent;
-    text-color:       inherit;
-    cursor:           inherit;
-    vertical-align:   0.5;
-    font:             "Monaspice Rn Nerd Font 12";
-}
-
-/* ── Message ──────────────────────────────────────────────────────────── */
-message {
-    background-color: @bg2;
-    border-radius:    8px;
-    padding:          8px 12px;
-    margin:           0 0 10px 0;
-}
-
-textbox {
-    background-color: transparent;
-    text-color:       @fg2;
-    font:             "Monaspice Rn Nerd Font 12";
 }
