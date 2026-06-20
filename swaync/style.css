@@ -1,96 +1,207 @@
 * {
-  font-family: "JetBrainsMono Nerd Font", sans-serif;
-  font-weight: 600;
-  transition: all 0.2s ease-in-out;
+    font-family: "JetBrainsMono Nerd Font", sans-serif;
+    font-weight: 600;
+    transition: all 180ms ease;
 }
 
-/* Base Notification Container */
+/* ============================================
+   Notifications
+============================================ */
+
 .notification-row {
-  outline: none;
-  margin: 6px 0px;
-  background: transparent;
+    outline: none;
+    margin: 6px 10px;
+    background: transparent;
 }
 
-/* The actual bubble */
 .notification-content {
-  background: #1e1e2e; /* Solid Base */
-  border: 2px solid #89b4fa; /* Bright Blue Border */
-  border-radius: 10px;
-  padding: 12px;
-  margin: 4px;
-  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.4); /* Retro Hard Shadow */
+    background: #282828;
+    border: 2px solid #504945;
+    border-radius: 14px;
+    padding: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
 }
 
-/* Hover Animation */
 .notification-row:hover .notification-content {
-  background: #242438;
-  border-color: #f5c2e7; /* Changes to Pink on hover */
-  transform: scale(1.02);
+    background: #32302f;
+    border-color: #d79921;
+    transform: translateY(-2px);
 }
 
-/* Control Center - Solid Glass Look */
+/* Notification Title */
+
+.summary {
+    color: #ebdbb2;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+/* Notification Body */
+
+.body {
+    color: #d5c4a1;
+    font-size: 13px;
+}
+
+/* Notification Time */
+
+.time {
+    color: #928374;
+    font-size: 12px;
+}
+
+/* Notification Image */
+
+.image {
+    border-radius: 10px;
+}
+
+/* ============================================
+   Control Center
+============================================ */
+
 .control-center {
-  background: #11111b;
-  border: 2px solid #313244;
-  border-radius: 15px;
-  padding: 10px;
-  margin: 10px;
+    background: rgba(40, 40, 40, 0.97);
+    border: 2px solid #504945;
+    border-radius: 18px;
+    padding: 12px;
+    margin: 10px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
 }
 
-/* Widgets Section */
+/* ============================================
+   Title Widget
+============================================ */
+
 .widget-title {
-  color: #cba6f7;
-  font-size: 1.2rem;
-  margin: 10px;
+    color: #fabd2f;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px;
 }
 
 .widget-title > button {
-  background: #313244;
-  color: #f38ba8;
-  border-radius: 8px;
-  padding: 5px 12px;
+    background: #3c3836;
+    color: #fb4934;
+    border-radius: 10px;
+    padding: 6px 14px;
+    border: none;
 }
 
 .widget-title > button:hover {
-  background: #f38ba8;
-  color: #11111b;
+    background: #fb4934;
+    color: #282828;
 }
 
-/* Music Player Widget */
-.widget-mpris {
-  background: #181825;
-  border: 1px solid #45475a;
-  border-radius: 12px;
-  padding: 12px;
-  margin: 8px;
-}
+/* ============================================
+   DND Widget
+============================================ */
 
-.widget-mpris-player {
-  padding: 5px;
-}
-
-.widget-mpris-title {
-  font-size: 1.1rem;
-  color: #89b4fa;
-}
-
-.widget-mpris-subtitle {
-  color: #bac2de;
-}
-
-/* DND Switch */
 .widget-dnd {
-  background: #181825;
-  padding: 10px;
-  border-radius: 10px;
-  margin: 8px;
+    background: #32302f;
+    border-radius: 12px;
+    padding: 12px;
+    margin: 8px;
+}
+
+.widget-dnd > label {
+    color: #ebdbb2;
 }
 
 .widget-dnd > switch {
-  border-radius: 20px;
-  background: #313244;
+    background: #504945;
+    border-radius: 20px;
+}
+
+.widget-dnd > switch slider {
+    background: #ebdbb2;
+    border-radius: 20px;
 }
 
 .widget-dnd > switch:checked {
-  background: #a6e3a1; /* Green when ON */
+    background: #98971a;
+}
+
+/* ============================================
+   MPRIS Widget
+============================================ */
+
+.widget-mpris {
+    background: #32302f;
+    border: 1px solid #504945;
+    border-radius: 14px;
+    padding: 12px;
+    margin: 8px;
+}
+
+.widget-mpris-player {
+    padding: 6px;
+}
+
+.widget-mpris-title {
+    color: #fabd2f;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.widget-mpris-subtitle {
+    color: #d5c4a1;
+}
+
+.widget-mpris button {
+    background: #3c3836;
+    color: #ebdbb2;
+    border-radius: 10px;
+    padding: 6px;
+}
+
+.widget-mpris button:hover {
+    background: #d79921;
+    color: #282828;
+}
+
+/* ============================================
+   Scrollbar
+============================================ */
+
+scrollbar {
+    background: transparent;
+}
+
+scrollbar slider {
+    background: #504945;
+    border-radius: 20px;
+}
+
+scrollbar slider:hover {
+    background: #d79921;
+}
+
+/* ============================================
+   Notification Actions
+============================================ */
+
+.notification-action {
+    background: #3c3836;
+    color: #ebdbb2;
+    border-radius: 10px;
+}
+
+.notification-action:hover {
+    background: #d79921;
+    color: #282828;
+}
+
+/* ============================================
+   Close Button
+============================================ */
+
+.close-button {
+    background: #fb4934;
+    color: #282828;
+    border-radius: 50%;
+}
+
+.close-button:hover {
+    background: #cc241d;
 }
