@@ -1,0 +1,145 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 20,
+    "spacing": 2,
+    "margin": 4,
+
+    "modules-left": [
+        "custom/launcher",
+        "hyprland/workspaces",
+        "clock" // <-- Clock/Date-Time is now directly to the right of workspaces
+    ],
+
+    "modules-center": [
+        "hyprland/window"
+    ],
+
+    "modules-right": [
+        "network#speed", // <-- Network speed meter is now over on the right side
+        "cpu",
+        "memory",
+        "pulseaudio",
+        "tray",
+        "custom/power"
+    ],
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "all-outputs": true,
+        "sort-by-number": true,
+        "format-icons": {
+            "1": "󰈹",
+            "2": "󰆍",
+            "3": "󰨞",
+            "4": "󰍹",
+            "5": "󰒓",
+            "6": "󰕄",
+            "7": "󰊠",
+            "8": "󰙯",
+            "9": "󰏘",
+            "10": "󰘔",
+            "default": ""
+        }
+    },
+
+    "network#speed": {
+        "interval": 1,
+        "format": " {bandwidthDownBytes}  {bandwidthUpBytes}",
+        "tooltip-format": "Interface: {ifname}\nIP: {ipaddr}\nCIDR: {cidr}",
+        "on-click": "nm-connection-editor"
+    },
+
+    "hyprland/window": {
+        "format": "{class}",
+        "separate-outputs": true,
+        "max-length": 50,
+        "icon": true,
+        "icon-size": 12
+    },
+
+    "cpu": {
+        "format": "󰍛 {usage}%",
+        "tooltip": true,
+        "on-click": "kitty -e htop"
+    },
+
+    "memory": {
+        "format": "󰘚 {}%",
+        "tooltip": true,
+        "on-click": "kitty -e htop"
+    },
+
+    "pulseaudio": {
+        "scroll-step": 3,
+        "format": "{icon} {volume}% {format_source}",
+        "format-bluetooth": "{volume}% {icon}  {format_source}",
+        "format-bluetooth-muted": " {icon}  {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "on-click": "kitty -T waybar_alsamixer -e alsamixer -M",
+        "on-click-right": "pavucontrol"
+    },
+
+    "backlight": {
+        "format": "󰃠 {percent}%",
+        "on-scroll-up": "brightnessctl set +5%",
+        "on-scroll-down": "brightnessctl set 5%-"
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-icons": [
+            "󰂎",
+            "󰁺",
+            "󰁼",
+            "󰁾",
+            "󰂀",
+            "󰁹"
+        ]
+    },
+
+    "clock": {
+        "interval": 1,
+        "tooltip-format": "<big>{:%A, %d.%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": " {:%a %d %b  %I:%M %p}",
+        "format-alt": " {:%d/%m/%Y  %H:%M:%S}"
+    },
+
+    "tray": {
+        "spacing": 5,
+        "icon-size": 16
+    },
+
+    "custom/launcher": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "rofi -show drun"
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": false,
+        "on-click": "~/.config/rofi/scripts/powermenu.sh"
+    }
+}

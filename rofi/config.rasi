@@ -1,194 +1,321 @@
 configuration {
-    modes:              "run,emoji:/usr/bin/rofimoji,ssh,drun";
-    sorting-method:     "normal";
-    show-icons:         true;
-    terminal:           "kitty";
-    editor:             "nvim";
+modes:              "run,emoji:/usr/bin/rofimoji,ssh,drun";
+sorting-method:     "fzf";
+show-icons:         true;
 
-    matching:           "fuzzy";
-    case-sensitive:     false;
+terminal:           "kitty";
+editor:             "nvim";
 
-    drun-match-fields:  "name";
+matching:           "fuzzy";
+case-sensitive:     false;
 
-    display-drun:       "󰀻 Apps:";
-    display-run:        " Menu:";
-    display-ssh:        " SSH:";
-    display-emoji:      "󱃞 Emoji";
+drun-match-fields:  "name";
 
-    kb-move-char-forward: "Right";
-    kb-move-char-back:    "Left";
-    kb-mode-next:         "Alt+Right";
-    kb-mode-previous:     "Alt+Left";
+display-drun:       "󰀻 Apps:";
+display-run:        " Menu:";
+display-ssh:        " SSH:";
+display-emoji:      "󱃞 Emoji";
+
+kb-move-char-forward: "Right";
+kb-move-char-back:    "Left";
+kb-mode-next:         "Alt+Right";
+kb-mode-previous:     "Alt+Left";
+
 }
 
-@theme "storm"
-
-/* ── Palette ──────────────────────────────────────────────────────────── */
 * {
-    bg0:     #1a1b26;
-    bg1:     #1f2335;
-    bg2:     #24283b;
-    bg3:     #414868;
-    fg0:     #c0caf5;
-    fg1:     #a9b1d6;
-    fg2:     #737aa2;
-    red:     #f7768e;
-    green:   #9ece6a;
-    yellow:  #e0af68;
-    blue:    #7aa2f7;
-    magenta: #9a7ecc;
-    cyan:    #4abaaf;
-    purple:  #fca7ea;
+  bg0:     #1d2021;
+  bg1:     #282828;
+  bg2:     #32302f;
+  bg3:     #3c3836;
+  bg4:     #504945;
 
-    accent:  @fg2;
-    urgent:  @red;
+  fg0:     #d4be98;
+  fg1:     #c0a36e;
+  fg2:     #928374;
 
-    background-color: transparent;
-    text-color:       @green;
-}
+  red:     #ea6962;
+  green:   #a9b665;
+  yellow:  #d8a657;
+  blue:    #7daea3;
+  magenta: #d3869b;
+  cyan:    #89b482;
+  orange:  #e78a4e;
 
-/* ── Window ───────────────────────────────────────────────────────────── */
+  accent:  @yellow;
+  urgent:  @red;
+
+  background-color: transparent;
+  text-color: @fg1;
+  }
+
+/* ----------------------------------------------------- */
+/* Window */
+/* ----------------------------------------------------- */
+
 window {
-    width:            500px;
-    background-color: @bg0;
-    border:           3px;
-    border-color:     @accent;
-    border-radius:    1px;
-    padding:          0;
+width: 500px;
+
+background-color: @bg0;
+
+border: 2px;
+border-color: @yellow;
+
+border-radius: 6px;
+
+padding: 0;
+
 }
 
-/* ── Main box ─────────────────────────────────────────────────────────── */
+/* ----------------------------------------------------- */
+/* Main Box */
+/* ----------------------------------------------------- */
+
 mainbox {
-    background-color: transparent;
-    children:         [ inputbar, message, mode-switcher, listview ];
-    spacing:          0;
-    padding:          10px;
+background-color: transparent;
+
+
+children: [
+    inputbar,
+    message,
+    mode-switcher,
+    listview
+];
+
+spacing: 0;
+padding: 10px;
+
 }
 
-/* ── Input bar ────────────────────────────────────────────────────────── */
+/* ----------------------------------------------------- */
+/* Search Bar */
+/* ----------------------------------------------------- */
+
 inputbar {
-    background-color: @bg2;
-    border-radius:    8px;
-    padding:          10px 14px;
-    margin:           0 0 10px 0;
-    children:         [ prompt, entry ];
-    spacing:          8px;
+background-color: @bg2;
+
+border-radius: 8px;
+
+padding: 10px 14px;
+
+margin: 0px 0px 10px 0px;
+
+children: [ prompt, entry ];
+
+spacing: 8px;
+
 }
 
 prompt {
-    background-color: transparent;
-    text-color:       @cyan;
-    font:             "CaskaydiaCove Nerd Font Italic 14";
+background-color: transparent;
+
+text-color: @green;
+
+font: "CaskaydiaCove Nerd Font Italic 14";
+
 }
 
 entry {
-    background-color: transparent;
-    text-color:       @green;
-    placeholder-color:@fg2;
-    font:             "CaskaydiaCove Nerd Font Italic 10";
-    cursor:           text;
+background-color: transparent;
+
+text-color: @fg0;
+
+placeholder-color: @fg2;
+
+font: "CaskaydiaCove Nerd Font Italic 10";
+
 }
 
+/* ----------------------------------------------------- */
+/* Text */
+/* ----------------------------------------------------- */
+
 element-text {
-    background-color: transparent;
-    text-color:       inherit;
-    cursor:           inherit;
-    vertical-align:   0.5;
-    font:             "CaskaydiaCove Nerd Font Italic 12";
+background-color: transparent;
+
+text-color: inherit;
+
+vertical-align: 0.5;
+
+font: "CaskaydiaCove Nerd Font Italic 12";
+
 }
 
 textbox {
-    background-color: transparent;
-    text-color:       @fg2;
-    font:             "CaskaydiaCove Nerd Font Italic 12";
+background-color: transparent;
+
+text-color: @fg2;
+
+font: "CaskaydiaCove Nerd Font Italic 12";
+
 }
 
-/* ── Mode switcher ────────────────────────────────────────────────────── */
+/* ----------------------------------------------------- */
+/* Mode Switcher */
+/* ----------------------------------------------------- */
+
 mode-switcher {
-    background-color: transparent;
-    margin:           0 0 10px 0;
-    spacing:          6px;
+background-color: transparent;
+
+margin: 0px 0px 10px 0px;
+
+spacing: 6px;
+
 }
 
 button {
-    background-color: @bg2;
-    text-color:       @magenta;
-    border-radius:    6px;
-    padding:          5px 12px;
-    cursor:           pointer;
+background-color: @bg2;
+
+text-color: @magenta;
+
+border-radius: 6px;
+
+padding: 5px 12px;
+
 }
 
 button selected {
-    background-color: @red;
-    text-color:       @bg0;
+background-color: @yellow;
+
+text-color: @bg0;
+
 }
 
-/* ── List view ────────────────────────────────────────────────────────── */
+/* ----------------------------------------------------- */
+/* List View */
+/* ----------------------------------------------------- */
+
 listview {
-    background-color: transparent;
-    columns:          1;
-    lines:            5;
-    spacing:          10px;
-    fixed-height:     false;
+background-color: transparent;
+
+columns: 1;
+
+lines: 5;
+
+spacing: 8px;
+
+fixed-height: false;
+
+border: 0px;
+
 }
+
+/* ----------------------------------------------------- */
+/* Scrollbar */
+/* ----------------------------------------------------- */
 
 scrollbar {
-    width:            4px;
-    handle-width:     4px;
-    background-color: @bg2;
-    handle-color:     @accent;
-    border-radius:    4px;
+width: 4px;
+
+background-color: @bg2;
+
+border-radius: 4px;
+
 }
 
-/* ── List elements ────────────────────────────────────────────────────── */
-element {
-    background-color: transparent;
-    text-color:       @fg0;
-    border-radius:    0px;
-    padding:          8px 10px;
-    spacing:          8px;
-    orientation:      horizontal;
-    cursor:           pointer;
+scrollbar handle {
+background-color: @yellow;
+
+border-radius: 4px;
+
 }
+
+/* ----------------------------------------------------- */
+/* Elements */
+/* ----------------------------------------------------- */
+
+element {
+background-color: transparent;
+
+text-color: @fg1;
+
+border-radius: 4px;
+
+padding: 8px 10px;
+
+spacing: 8px;
+
+orientation: horizontal;
+
+}
+
+/* Normal rows */
 
 element normal.normal {
-    background-color: transparent;
-    text-color:       @fg1;
+background-color: transparent;
+text-color: @fg1;
 }
 
-element normal.urgent {
-    background-color: transparent;
-    text-color:       @urgent;
+element alternate.normal {
+background-color: transparent;
+text-color: @fg1;
 }
+
+/* Active rows */
 
 element normal.active {
-    background-color: transparent;
-    text-color:       @cyan;
+background-color: transparent;
+text-color: @cyan;
 }
+
+element alternate.active {
+background-color: transparent;
+text-color: @cyan;
+}
+
+/* Urgent rows */
+
+element normal.urgent {
+background-color: transparent;
+text-color: @urgent;
+}
+
+element alternate.urgent {
+background-color: transparent;
+text-color: @urgent;
+}
+
+/* Selected */
 
 element selected.normal {
-    background-color: @bg3;
-    text-color:       @fg0;
-    border:           0 0 0 3px;
-    border-color:     @accent;
-}
+background-color: @bg3;
 
-element selected.urgent {
-    background-color: @bg3;
-    text-color:       @urgent;
-    border:           0 0 0 3px;
-    border-color:     @urgent;
+text-color: @fg0;
+
+border: 0px 0px 0px 3px;
+
+border-color: @yellow;
+
 }
 
 element selected.active {
-    background-color: @bg3;
-    text-color:       @cyan;
-    border:           0 0 0 3px;
-    border-color:     @cyan;
+background-color: @bg3;
+
+text-color: @cyan;
+
+border: 0px 0px 0px 3px;
+
+border-color: @cyan;
+
 }
 
-element-icon {
-    background-color: transparent;
-    size:             24px;
-    cursor:           inherit;
+element selected.urgent {
+background-color: @bg3;
+
+text-color: @urgent;
+
+border: 0px 0px 0px 3px;
+
+border-color: @urgent;
+
 }
+
+/* Icons */
+
+element-icon {
+background-color: transparent;
+
+size: 24px;
+
+}
+
